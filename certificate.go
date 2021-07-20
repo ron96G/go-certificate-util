@@ -120,12 +120,7 @@ func GenerateCertificate(opts Options) (certPEM *bytes.Buffer, certPrivKeyPEM *b
 
 	cert := &x509.Certificate{
 		SerialNumber: big.NewInt(1658),
-		Subject: pkix.Name{
-			Organization: []string{"ClamAV Fake Certificate"},
-			Country:      []string{"DE"},
-			Province:     []string{"NRW"},
-			Locality:     []string{"Bonn"},
-		},
+		Subject:      opts.Subject,
 		DNSNames:     []string{""},
 		NotBefore:    time.Now(),
 		NotAfter:     time.Now().AddDate(10, 0, 0),
